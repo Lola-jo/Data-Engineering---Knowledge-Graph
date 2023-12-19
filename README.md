@@ -73,4 +73,5 @@
 7、知识图谱是结构化知识的一种方式，存储方式可以用关系型，可以用nosql，也可以用图数据库，不同的方式的区别在于sql的转化上。在关系级联程度不高的情况下，使用非图数据库可能会是更好的方式。  
 8、深度学习在工业界问答中，在基于qa对检索中用的比较多，在结构化知识图谱查询中较难大显身手，集中应用点在实体论元识别上，个人认为在实体属性关系的识别上不会很惊艳，很有可能没有规则来的快，来的准确。  
 
-
+# 致谢
+感谢[liuhuanyong](https://github.com/liuhuanyong/QASystemOnMedicalKG/commits?author=liuhuanyong)创建了开源项目[QASystemOnMedicalKG](https://github.com/liuhuanyong/QASystemOnMedicalKG)。他为本项目的大部分内容提供了灵感。
