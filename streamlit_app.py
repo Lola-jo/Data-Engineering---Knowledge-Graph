@@ -1,7 +1,5 @@
-# streamlit_app.py
-
 import streamlit as st
-from military_qa import MilitaryGraph  # 导入你的MilitaryGraph类
+from military_qa import MilitaryGraph
 
 class StreamlitMilitaryGraph:
     def __init__(self):
@@ -11,12 +9,22 @@ class StreamlitMilitaryGraph:
         return self.military_graph.question_parser(user_question)
 
     def answer_question(self, parsed_question):
-        return self.military_graph.search_answer(parsed_question)  # 更新这里的调用方式
+        results = self.military_graph.search_answer(parsed_question)
+        if not results:
+            return "对不起，目前暂时还无法回答此类问题..."
+        else:
+            result_strings = ["共找到%s个答案， 下面是具体明细：" % len(results)]
+            for result in results:
+                result_strings.append(result)
+            return result_strings
+
+    def qa_main(self, question):
+        parser_dict = self.military_graph.question_parser(question)
+        return self.answer_question(parser_dict)
 
 def main():
-    st.title('军事知识图谱问答')  # 设置应用的标题
+    st.title('军事知识图谱问答')
 
-    # 展示问题提问方式
     st.write("问题提问方式：")
     question_types = [
         ["属性值问答", "单实体单属性问答", "神舟五号的长度是多少?"],
@@ -36,8 +44,11 @@ def main():
 
     if user_question:
         parsed_question = streamlit_military_graph.parse_question(user_question)
-        answer = streamlit_military_graph.answer_question(parsed_question)
-        st.write("回答：", answer)  # 先展示回答结果
+        # answer = streamlit_military_graph.qa_main(user_question)
+        results = streamlit_military_graph.qa_main(user_question)
+        for result in results:
+            st.write(result)
+        # st.write("回答：", answer)  # 先展示回答结果
         st.write("解析后的问题：", parsed_question)  # 再展示解析后的问题
 
 if __name__ == '__main__':

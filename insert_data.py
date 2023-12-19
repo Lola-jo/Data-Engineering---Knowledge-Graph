@@ -6,7 +6,7 @@ import pymongo
 class InsertData:
     def __init__(self):
         cur = '/'.join(os.path.abspath(__file__).split('/')[:-1])
-        self.datapath = 'D:/2023/23winter/Knowledge Graph/QAonMilitaryKG/data/military.json'
+        self.datapath = './data/military.json'
         self.conn = pymongo.MongoClient()
         self.db = self.conn['military_qa']
         self.collection = self.db['data']

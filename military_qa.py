@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-# coding: utf-8
-# File: militarygraph.py
-# Author: lhy<lhy_in_blcu@126.com,https://huangyong.github.io>
-# Date: 19-3-11
-
 import os
 import re
 import json
@@ -14,7 +8,7 @@ import pymongo
 class MilitaryGraph:
     def __init__(self):
         cur = '/'.join(os.path.abspath(__file__).split('/')[:-1])
-        self.datapath = 'D:/2023/23winter/Knowledge Graph/QAonMilitaryKG/data/military.json'
+        self.datapath = './data/military.json'
         self.conn = pymongo.MongoClient()
         db_name = 'military_qa'
         col_name = 'data'
@@ -553,7 +547,7 @@ class MilitaryGraph:
             result = self.query_mongo_sort(search_data)
         return result
 
-    '''查询mongo数据库，正常'''
+    '''查询mongo数据库 正常'''
     def query_mongo_attr(self, search_data):
         result = []
         for search in search_data:
