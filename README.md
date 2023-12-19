@@ -1,7 +1,7 @@
 # QAonMilitaryKG
 &emsp;QAonMilitaryKG，QaSystem based on military knowledge graph that stores in mongodb which is different from the previous one, 基于mongodb存储的军事领域知识图谱问答项目，包括飞行器、太空装备等8大类，100余小类，共计5800项的军事武器知识库，该项目不使用图数据库进行存储，通过jieba进行问句解析，问句实体项识别，基于查询模板完成多类问题的查询，主要是提供一种工业界的问答思想demo。  
 # 项目背景
-&emsp;基于知识图谱或知识库的问答KBQA是目前垂直领域或百科领域问答中使用较多的一种问答方式，本质上是在做结构化数据的匹配查询任务。笔者之前利用neo4g图数据库上基于医疗领域结构化知识库，阐述了基于图数据库的医疗知识图谱构建与问答方案，并实现了一个简单的demo。项目见:(https://github.com/liuhuanyong/QASystemOnMedicalKG)  
+&emsp;基于知识图谱或知识库的问答KBQA是目前垂直领域或百科领域问答中使用较多的一种问答方式，本质上是在做结构化数据的匹配查询任务。
 &emsp;技术选型是实现自动问答系统的一个重要环节，这项工作与数据样式关系尤为密切。经验上来说，对于实体类型较多以及实体关系种类较多的知识库，使用图数据进行知识存储是个较好的选择。而对应实体类型较少，实体关系较少，实体属性较多以及带有时序性的数据时，选用文档型数据库mongodb是个不错的选择。  
 &emsp;军事领域是敏感度、机密系数较高的一个领域，其数据价值很高，获取相关军事数据并提供一个便捷的人机交互方式具有重要的战略意义。军事中的装备信息，军事基地信息，军事作战部队之间的关联信息，以图谱的形式组织，能够在作战策略推荐，军事人员培训上起到重要作用。目前，公开的军事资料不多，收录较全的有环球军事网，其中的人物，战役，兵器库，术语库等为军事提供了一个很好的信息平台。其中，武器库是其中结构化程度较高的一项数据，其中包括了飞行器、舰艇等8大类武器，轰炸机等100余小类，共计5800项武器结构化数据。这为结构化知识问答提供了一个的数据，因此，本项目选择该数据集作为知识库，使用mongodb进行自动问答的实验。  
 &emsp;本项目有2个重要目标：  
@@ -9,7 +9,7 @@
 &emsp;2，实现基于mongodb的军事领域知识库的自动问答。  
 
 # 项目框架
-![image](https://github.com/liuhuanyong/QAonMilitaryKG/blob/master/image/schema.png)
+![image](./image/schema.png)
 
 # 项目构成
 
@@ -26,8 +26,8 @@
 
 
 # 2, 数据样式
-![image](https://github.com/liuhuanyong/QAonMilitaryKG/blob/master/image/data_sample1.png)
-![image](https://github.com/liuhuanyong/QAonMilitaryKG/blob/master/image/data_sample2.png)
+![image](./image/data_sample1.png)
+![image](./image/data_sample2.png)
 
 # 3, 问句类型
 
@@ -60,7 +60,7 @@
 &emsp;ps：若需要进行自我重新构建数据，可运行collect_data.py。  
 
 # 项目结果
-![image](https://github.com/liuhuanyong/QAonMilitaryKG/blob/master/image/res_example1.png)
+![image](./image/res_example1.png)
 
 
 # 总结
@@ -73,7 +73,4 @@
 7、知识图谱是结构化知识的一种方式，存储方式可以用关系型，可以用nosql，也可以用图数据库，不同的方式的区别在于sql的转化上。在关系级联程度不高的情况下，使用非图数据库可能会是更好的方式。  
 8、深度学习在工业界问答中，在基于qa对检索中用的比较多，在结构化知识图谱查询中较难大显身手，集中应用点在实体论元识别上，个人认为在实体属性关系的识别上不会很惊艳，很有可能没有规则来的快，来的准确。  
 
-如有自然语言处理、知识图谱、事理图谱、社会计算、语言资源建设等问题或合作，可联系我：  
-1、我的github项目介绍：https://liuhuanyong.github.io。  
-2、我的csdn博客：https://blog.csdn.net/lhy2014  
-3、about me:刘焕勇，中国科学院软件研究所，lhy_in_blcu@126.com  
+
