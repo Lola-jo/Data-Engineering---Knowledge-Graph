@@ -568,6 +568,16 @@ class MilitaryGraph:
                 result_ = [res.get('名称') + target + ':' + str(res.get(target, 'null')) for target in targets]
                 result.append(result_)
         return result
+    
+    # 在military_qa.py文件中修改query_mongo_image方法，返回有效的默认图像URL
+    def query_mongo_image(self, weapon_name):
+
+        # 在数据库中查询转换后的武器名称对应的图像路径
+        image_url = self.col.find_one({'名称': weapon_name}, {'image_url': 1})
+        if image_url:
+            return image_url.get('image_url')
+        else:
+            return 'https://example.com/default_image.jpg'  # 替换为有效的默认图像URL
 
     '问答主函数'
     def qa_main(self, question):
@@ -580,9 +590,11 @@ class MilitaryGraph:
             for result in results:
                 print(result)
         return
-
+    
 if __name__ == '__main__':
     handler = MilitaryGraph()
     while 1:
         question = input("用户：").strip()
         handler.qa_main(question)
+
+

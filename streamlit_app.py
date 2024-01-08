@@ -1,5 +1,8 @@
 import streamlit as st
 from military_qa import MilitaryGraph
+from military_qa import query_mongo_image
+# 在你的主
+# 程序中使用新的 GraphGenerator 类
 
 class StreamlitMilitaryGraph:
     def __init__(self):
@@ -21,6 +24,13 @@ class StreamlitMilitaryGraph:
     def qa_main(self, question):
         parser_dict = self.military_graph.question_parser(question)
         return self.answer_question(parser_dict)
+
+    def display_weapon_image(self, weapon_name):
+        weapon_image_path = query_mongo_image(weapon_name)
+        if weapon_image_path:
+            st.image(weapon_image_path, caption='武器图像', use_column_width=True)
+        else:
+            st.write('未找到该武器的图像')
 
 def main():
     st.title('军事知识图谱问答')
@@ -44,12 +54,14 @@ def main():
 
     if user_question:
         parsed_question = streamlit_military_graph.parse_question(user_question)
-        # answer = streamlit_military_graph.qa_main(user_question)
         results = streamlit_military_graph.qa_main(user_question)
         for result in results:
             st.write(result)
-        # st.write("回答：", answer)  # 先展示回答结果
-        st.write("解析后的问题：", parsed_question)  # 再展示解析后的问题
+        st.write("解析后的问题：", parsed_question)
+
+        # 获取武器名称并展示图像
+        weapon_name = 'AK47'  # 你需要根据问题解析的结果来获取武器名称
+        streamlit_military_graph.display_weapon_image(weapon_name)
 
 if __name__ == '__main__':
     main()
